@@ -6,27 +6,27 @@ const arrayOfNumbers = Array.apply(null, {length: 1000}).map(Number.call, Number
 const mapIndexed = R.addIndex(R.filter);
 
 const approachOne = () => {
-	const multiplesOfThreeAndFive = (numberToCheck) => {
-	  const checkThree = R.equals((R.modulo(numberToCheck, 3)), 0);
-	  const checkFive = R.equals((R.modulo(numberToCheck, 5)), 0);
-	  
-	  return R.or(checkThree, checkFive);
-	}
+  const multiplesOfThreeAndFive = (numberToCheck) => {
+    const checkThree = R.equals((R.modulo(numberToCheck, 3)), 0);
+    const checkFive = R.equals((R.modulo(numberToCheck, 5)), 0);
+    
+    return R.or(checkThree, checkFive);
+  }
 
-	const multiplesFiltered = mapIndexed((item, index) => { 
-	  if(multiplesOfThreeAndFive(index)) { return index }; 
-	}, arrayOfNumbers)
+  const multiplesFiltered = mapIndexed((item, index) => { 
+    if(multiplesOfThreeAndFive(index)) { return index }; 
+  }, arrayOfNumbers)
 
-	return R.reduce(R.add, 0, multiplesFiltered);
+  return R.reduce(R.add, 0, multiplesFiltered);
 }
 
 
 
 
 const approachTwo = () => {
-	const checkModulos = (i) => { return R.or(R.modulo(i, 3) === 0, R.modulo(i, 5) === 0); }
+  const checkModulos = (i) => { return R.or(R.modulo(i, 3) === 0, R.modulo(i, 5) === 0); }
 
-	return R.sum(R.filter(checkModulos, arrayOfNumbers));
+  return R.sum(R.filter(checkModulos, arrayOfNumbers));
 }
 
 
