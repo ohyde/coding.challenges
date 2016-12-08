@@ -5,7 +5,7 @@ import R from 'ramda';
 const arrayOfNumbers = Array.apply(null, {length: 1000}).map(Number.call, Number)
 const mapIndexed = R.addIndex(R.filter);
 
-const approachOne = () => {
+const approachOne = (arrayOfNumbers) => {
   const multiplesOfThreeAndFive = (numberToCheck) => {
     const checkThree = R.equals((R.modulo(numberToCheck, 3)), 0);
     const checkFive = R.equals((R.modulo(numberToCheck, 5)), 0);
@@ -23,12 +23,28 @@ const approachOne = () => {
 
 
 
-const approachTwo = () => {
+const approachTwo = (arrayOfNumbers) => {
   const checkModulos = (i) => { return R.or(R.modulo(i, 3) === 0, R.modulo(i, 5) === 0); }
 
   return R.sum(R.filter(checkModulos, arrayOfNumbers));
 }
 
+const approachThree = (arrayOfNumbers) => {
+  const dividedBy = curry((by, to) => {
+    return R.compose(
+       R.equals(R.__, 0), 
+       R.modulo(to)
+    )(by)
+  })
+
+  return R.compose(
+    R.sum,
+    R.filter(R.either(dividedBy(3), dividedBy(5))),
+    R.range(1)
+  )(arrayOfNumbers);
+}
+
 
 console.log(approachOne(arrayOfNumbers));
 console.log(approachTwo(arrayOfNumbers));
+console.log(approachThree(arrayOfNumbers));
