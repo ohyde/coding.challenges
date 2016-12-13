@@ -3,7 +3,6 @@
 import R from 'ramda';
 
 const arrayOfNumbers = Array.apply(null, {length: 1000}).map(Number.call, Number)
-const mapIndexed = R.addIndex(R.filter);
 
 const approachThree = (arrayOfNumbers) => {
   const dividedBy = R.curry((by, to) => {
@@ -34,9 +33,8 @@ const approachOne = (arrayOfNumbers) => {
     return R.or(checkThree, checkFive);
   }
 
-  const multiplesFiltered = mapIndexed((item, index) => {
-    if(multiplesOfThreeAndFive(index)) { return index };
-  }, arrayOfNumbers)
+  const indexedFilter = R.addIndex(R.filter);
+  const multiplesFiltered = indexedFilter(multiplesOfThreeAndFive, arrayOfNumbers)
 
   return R.reduce(R.add, 0, multiplesFiltered);
 }
