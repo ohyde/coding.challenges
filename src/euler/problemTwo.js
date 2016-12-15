@@ -4,6 +4,7 @@
 // By considering the terms in the Fibonacci sequence whose values do not
 // exceed four million, find the sum of the even-valued terms.
 import R from 'ramda';
+import { isEven } from '../utils/ramdaUtils';
 
 const fibonacci = (n) => {
   if (n < 2) { return 1; }
@@ -12,8 +13,7 @@ const fibonacci = (n) => {
 
 const approachOne = () => {
   const fibonacciByRange = R.map(fibonacci, R.range(0, 33)); // Need to include checking for 4000000 instead of using range
-  const moduloTwo = R.flip(R.modulo)(2);
-  const isEven = R.compose(R.equals(0), moduloTwo);
+
   const evenFibonacciNums = R.filter(isEven, fibonacciByRange);
 
   return R.reduce(R.add, 0, evenFibonacciNums);
