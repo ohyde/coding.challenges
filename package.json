@@ -28,6 +28,7 @@
     "babel-register": "^6.18.0",
     "chai": "^4.0.0-canary.1",
     "coveralls": "^2.11.15",
+    "javascript-utility-belt": "^1.0.1",
     "jsdom": "^9.8.3",
     "mocha": "^3.2.0",
     "nyc": "^10.0.0",
