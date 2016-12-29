@@ -4,7 +4,7 @@
 // By considering the terms in the Fibonacci sequence whose values do not
 // exceed four million, find the sum of the even-valued terms.
 import R from 'ramda';
-import { isEven } from '../utils/ramdaUtils';
+import { isEven } from 'javascript.utility.belt';
 
 const fibonacci = (n) => {
   if (n < 2) { return 1; }

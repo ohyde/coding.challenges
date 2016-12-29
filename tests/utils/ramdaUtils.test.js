@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { isEven, isOdd, moduloTwo } from '../../src/utils/ramdaUtils';
+import { isEven, isOdd, moduloTwo } from 'javascript.utility.belt';
 
 describe('ramdaUtils', () => {
   describe("isEven", () => {

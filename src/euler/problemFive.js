@@ -1,7 +1,7 @@
 // 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
 // What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 import R from 'ramda';
-import { gcd, lcd } from '../utils/ramdaUtils';
+import { gcd, lcm } from 'javascript.utility.belt';
 
 const approachThree = (min, max) => {
   return R.reduce(lcm, 1, R.range(min, max));
