@@ -14,18 +14,18 @@ const approachTwo = (min, max) => {
   return multiple;
 }
 
-const approachOne = () => {
+const approachOne = (min, max) => {
   let i = 1;
   const withinRange = (a, b) => {
     if(!a && b > 2) { return a }
     return R.equals(0, R.modulo(i, b))
   }
 
-  while(!R.reduce(withinRange, false, R.range(2, 10))) { i++; }
+  while(!R.reduce(withinRange, false, R.range(min, max))) { i++; }
 
   return i;
 }
 
 console.log(approachThree(1, 20));
-console.log(approachOne());
 console.log(approachTwo(1, 20));
+console.log(approachOne(2, 10)); // too slow

@@ -2,4 +2,3 @@
 
 
 Todo:
- - migrate tests to javascript-utility-belt
