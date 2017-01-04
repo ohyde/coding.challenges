@@ -1,12 +1,8 @@
 import R from 'ramda';
+import { isPrime } from 'javascript.utility.belt';
 
-function isPrime(num) {
-    if(num < 2) return false;
-    for (var i = 2; i < num; i++) {
-        if(num%i==0)
-            return false;
-    }
-    return true;
+const approachOne = (limit) => {
+  return R.reduce(R.add, 0, R.filter(isPrime, R.range(0, limit)))
 }
 
-console.log(R.reduce(R.add, 0, R.filter(isPrime, R.range(0, 2000000))))
+console.log(approachOne(2000000));
