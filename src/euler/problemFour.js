@@ -7,7 +7,7 @@ const intReverse = (intToReverse) => {
 const rangeOfTwoDigitNumbers = R.reverse(R.range(10,100))
 const rangeOfThreeDigitNumbers = R.reverse(R.range(100,1000))
 
-const approachOne = () => {
+const approachOne = (arrayOfNums) => {
   let result = 0;
   R.forEach((item) => {
     R.forEach((secondItem) => {
@@ -19,11 +19,29 @@ const approachOne = () => {
         }
       }
 
-    }, rangeOfThreeDigitNumbers);
-  }, rangeOfThreeDigitNumbers);
+    }, arrayOfNums);
+  }, arrayOfNums);
 
   return result;
 }
 
+const approachTwo = (arrayOfNums) => {
+  return R.head(R.reduce((agr, item) => {
+    const maxNumber = (agr.length !== 0) ? Math.max.apply( Math, agr ) : R.divide(arrayOfNums.length, 2);
+    const result = R.reject(R.isNil, R.map((anotherItem) => {
+      const multiplied = R.multiply(item, anotherItem);
 
-console.log(approachOne());
+      if(R.gt(maxNumber, multiplied)) { return; }
+      if(R.equals(multiplied, intReverse(multiplied))){ return multiplied; }
+
+      return;
+    }, arrayOfNums));
+
+    if(R.gt(result.length, 0)) { return R.union(agr, result) }
+
+    return [Math.max.apply( Math, agr )];
+  }, [], arrayOfNums))
+}
+
+
+console.log(approachTwo(rangeOfThreeDigitNumbers));
