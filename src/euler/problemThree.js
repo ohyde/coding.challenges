@@ -11,7 +11,9 @@ export const calculate = (num, func) => {
 
     for (i; i <= half; i += j) {
         if (num % i == 0){
+          if(func(i)){
             primes.push(i);
+          }
         }
     }
 
