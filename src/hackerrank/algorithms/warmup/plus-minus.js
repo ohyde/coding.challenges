@@ -24,6 +24,9 @@ const approachOne = (arr) => {
 const approachTwo = (arr) => {
   const objectStructure = { positives: 0, negatives: 0, zeros: 0 }
 
+  const fixedAverage = R.curry((num, arr) => R.divide(num, arr.length).toFixed(6));
+  const average = fixedAverage(R.__, arr);
+
   const finalObject = R.reduce((acc, item) => {
       return R.evolve({
         positives: (Math.sign(item) === 1) ? R.inc : (x) => x,
@@ -33,9 +36,9 @@ const approachTwo = (arr) => {
   }, objectStructure, arr);
 
 
-  console.log((finalObject.positives / arr.length).toFixed(6));
-  console.log((finalObject.negatives / arr.length).toFixed(6));
-  console.log((finalObject.zeros / arr.length).toFixed(6));
+  console.log(average(finalObject.positives));
+  console.log(average(finalObject.negatives));
+  console.log(average(finalObject.zeros));
 }
 
 const arr = [ -4, 3, -9, 0, 4, 1 ];
