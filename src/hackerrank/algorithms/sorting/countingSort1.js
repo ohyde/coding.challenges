@@ -31,3 +31,14 @@ const countingSort = R.compose(
 );
 
 countingSort(testString);
+
+
+const stepOne = R.split(/\r?\n/, testString);
+const stepTwo = R.last(stepOne);
+const stepThree = R.split(' ', stepTwo);
+const stepFour = R.groupBy(R.identity, stepThree); // Key step
+const stepFive = R.values(stepFour); // Breakes the object out into just the values per key in an array
+const stepSix = R.map(R.length, stepFive);
+const stepSeven = R.join(' ', stepSix);
+
+// console log per step to see how it works. or R.tap(console.log), during the compose
