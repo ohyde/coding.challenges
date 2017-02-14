@@ -21,12 +21,9 @@ const splitArray = R.compose(
   R.drop(1)
 )(testArray)
 
-
-const takeNumFromArrayAndAdd = R.compose(
-  R.reduce(R.add, 0),
-  R.take(R.__, splitArray)
-);
-
 mapIndexed((x, i) => {
-  return takeNumFromArrayAndAdd(i + 1);
+  return R.compose(
+    R.reduce(R.add, 0),
+    R.take(R.__, splitArray)
+  )(i + 1)
 }, splitArray);
