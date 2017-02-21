@@ -1,4 +1,5 @@
-"# coding.challenges"
+Coding Challenges
 
-
-Todo:
+ - ProjectEuler
+ - HackerRank
+ - Algorithms and Design Patterns implemented in different languages
