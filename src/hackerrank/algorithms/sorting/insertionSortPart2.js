@@ -6,11 +6,11 @@ function processData(input) {
         R.split(" ")
     )(array);
  
-    for (i = 1; i <= size - 1; i += 1){
-        const toSort = arr.slice(0, i + 1);
-        const rest = arr.slice(i + 1, size)
+    for (let i = 1; i <= size - 1; i += 1){
+        const toSort = R.slice(0, i + 1, arr);
+        const rest = R.slice(i + 1, size, arr);
         arr = insertionSort(toSort).concat(rest);
-        console.log(arr.join(' '));
+        console.log(R.join(' ', arr));
     } 
 }
  
