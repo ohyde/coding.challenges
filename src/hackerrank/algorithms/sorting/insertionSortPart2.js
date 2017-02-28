@@ -1,7 +1,10 @@
 function processData(input) {
     const [sizeString, array] = input.split("\n");
     const size = parseInt(sizeString);
-    let arr = array.split(" ").map((val) => parseInt(val));
+    let arr = R.compose(
+        R.map(parseInt),
+        R.split(" ")
+    )(array);
  
     for (i = 1; i <= size - 1; i += 1){
         const toSort = arr.slice(0, i + 1);
