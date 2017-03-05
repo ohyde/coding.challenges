@@ -16,7 +16,7 @@ function processData(input) {
  
 function insertionSort(arr) {
     const e = arr[arr.length - 1];
-    for(let i=arr.length-2; i>=0; i--) {
+    for(let i = arr.length - 2; i >= 0; i--) {
         let value = arr[i];
         if (value > e) {
             arr[i + 1] = value;
