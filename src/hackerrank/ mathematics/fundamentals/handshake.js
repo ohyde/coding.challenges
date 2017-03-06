@@ -12,13 +12,9 @@ function processData(input) {
   return total;
 }
 
-const hackerRankSolution = (input) => {
-  var T = parseInt(readLine());
-
-  for(var a0 = 0; a0 < T; a0++){
-      var N = parseInt(readLine());
-      let input = N;
-
+const hackerRankSolution = (arrayOfNumbers) => {
+  for(var a0 = 0; a0 < arrayOfNumbers.length; a0++){
+      let input = arrayOfNumbers[a0];
       if(input == 1){ console.log(0); }
       else if(input == 2){ console.log(1); }
       else {
@@ -34,6 +30,8 @@ const hackerRankSolution = (input) => {
 }
 
 
-let arrayOfInputs = [5277,9302,7274,3,5968,1327,255,27,5665,8104,138,4051,4168,507,7773,2688,3497,4074,1403,3599,2007,7621,3124,1195,7245,1979,3365,6607,4816,9336,3620,1557,3404,5451,3739,2504,1845,5533,8298,2893,7814];
+let arrayOfInputs = [5,6,7,85277,9302,7274,3,5968,1327,255,27,5665,8104,138,4051,4168,507,7773,2688,3497,4074,1403,3599,2007,7621,3124,1195,7245,1979,3365,6607,4816,9336,3620,1557,3404,5451,3739,2504,1845,5533,8298,2893,7814];
 
-processData(9302)
+hackerRankSolution(arrayOfInputs)
+
+
