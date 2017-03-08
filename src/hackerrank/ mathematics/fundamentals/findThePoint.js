@@ -1,5 +1,4 @@
 function processData(input) {
-    //Enter your code here
     const splitByN = input.split("\n");
     
     for(let i = 1; i < splitByN.length; i++){
@@ -12,3 +11,7 @@ function processData(input) {
         console.log(xResult + " " + yResult);
     }
 } 
+
+const testInput = "2\n0 0 1 1\n1 1 2 2";
+
+processData(testInput);
